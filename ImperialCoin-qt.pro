@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = abccoin-qt
+TARGET = ImperialCoin-qt
 macx:TARGET = "ABCCoin-Qt"
 VERSION = 0.9.0
 INCLUDEPATH += src src/json src/qt
@@ -10,20 +10,20 @@ CONFIG += no_include_pwd
 CONFIG += thread
 
 #uncomment the following section to enable building on windows:
-#windows:LIBS += -lshlwapi
-#LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
-#LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
-#windows:LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
-#LIBS += -lboost_system-mgw46-mt-sd-1_53 -lboost_filesystem-mgw46-mt-sd-1_53 -lboost_program_options-mgw46-mt-sd-1_53 -lboost_thread-mgw46-mt-sd-1_53
-#BOOST_LIB_SUFFIX=-mgw46-mt-sd-1_53
-#BOOST_INCLUDE_PATH=C:/deps/boost
-#BOOST_LIB_PATH=C:/deps/boost/stage/lib
-#BDB_INCLUDE_PATH=c:/deps/db/build_unix
-#BDB_LIB_PATH=c:/deps/db/build_unix
-#OPENSSL_INCLUDE_PATH=c:/deps/ssl/include
-#OPENSSL_LIB_PATH=c:/deps/ssl
-#MINIUPNPC_LIB_PATH=c:/deps/miniupnpc
-#MINIUPNPC_INCLUDE_PATH=c:/deps
+windows:LIBS += -lshlwapi
+LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
+LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
+windows:LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
+LIBS += -lboost_system-mgw46-mt-sd-1_54 -lboost_filesystem-mgw46-mt-sd-1_54 -lboost_program_options-mgw46-mt-sd-1_54 -lboost_thread-mgw46-mt-sd-1_54
+BOOST_LIB_SUFFIX=-mgw46-mt-sd-1_54
+BOOST_INCLUDE_PATH=C:/depens/boost
+BOOST_LIB_PATH=C:/depens/boost/stage/lib
+BDB_INCLUDE_PATH=c:/depens/db/build_unix
+BDB_LIB_PATH=c:/depens/db/build_unix
+OPENSSL_INCLUDE_PATH=c:/depens/ssl/include
+OPENSSL_LIB_PATH=c:/depens/ssl
+MINIUPNPC_LIB_PATH=c:/depens/miniupnpc
+MINIUPNPC_INCLUDE_PATH=c:/depens
 
 OBJECTS_DIR = build
 MOC_DIR = build
