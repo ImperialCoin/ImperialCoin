@@ -1266,11 +1266,11 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 60; // 1 minutes
-static const int64 nTargetSpacing = 30; // 30 seconds
+static const int64 nTargetTimespan = 1; // 1 minutes
+static const int64 nTargetSpacing = 1; // 30 seconds
 static const int64 nInterval = nTargetTimespan / nTargetSpacing; // 2 blocks
 
-static const int64 nAveragingInterval = nInterval * 20; // 40 blocks
+static const int64 nAveragingInterval = nInterval * 1; // 40 blocks
 static const int64 nAveragingTargetTimespan = nAveragingInterval * nTargetSpacing; // 40 minutes
 
 static const int64 nMaxAdjustDown = 20; // 20% adjustment down
@@ -4637,7 +4637,7 @@ void static BitcoinMiner(CWallet *pwallet)
     CReserveKey reservekey(pwallet);
     unsigned int nExtraNonce = 0;
 
-    try { while (true) {
+    try { loop {
         if (Params().NetworkID() != CChainParams::REGTEST) {
             // Busy-wait for the network to come online so we don't waste time mining
             // on an obsolete chain. In regtest mode we expect to fly solo.
@@ -4681,7 +4681,7 @@ void static BitcoinMiner(CWallet *pwallet)
         uint256 hashTarget = CBigNum().SetCompact(pblock->nBits).getuint256();
         uint256 hashbuf[2];
         uint256& hash = *alignup<16>(hashbuf);
-        while (true)
+        loop
         {
             unsigned int nHashesDone = 0;
             unsigned int nNonceFound;
