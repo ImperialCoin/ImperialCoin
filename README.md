@@ -1,4 +1,1 @@
-ABCCoin - An SHA256 PoW Cloner!
-
-[![Build Status](https://travis-ci.org/RazorLove/abccoin.png?branch=master)](https://travis-ci.org/RazorLove/abccoin)
-
+I AM CURRENTLY WORKING ON THE IMPERIALCOIN CODE! CLONE newmaster BRANCH FOR THE TIME BEING!
