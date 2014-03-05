@@ -62,6 +62,36 @@ Value setgenerate(const Array& params, bool fHelp)
     return Value::null;
 }
 
+// ImperialCoin: Return average network hashes per second based on last number of blocks.
+ Value GetNetworkHashPS(int lookup) {
+     if (pindexBest == NULL)
+         return 0;
+ 
+     // If lookup is larger than chain, then set it to chain length.
+     if (lookup > pindexBest->nHeight)
+         lookup = pindexBest->nHeight;
+ 
+     CBlockIndex* pindexPrev = pindexBest;
+     for (int i = 0; i < lookup; i++)
+         pindexPrev = pindexPrev->pprev;
+ 
+     double timeDiff = pindexBest->GetBlockTime() - pindexPrev->GetBlockTime();
+     double timePerBlock = timeDiff / lookup;
+ 
+     return (boost::int64_t)(((double)GetDifficulty() * pow(2.0, 32)) / timePerBlock);
+ }
+ 
+ Value getnetworkhashps(const Array& params, bool fHelp)
+ {
+     if (fHelp || params.size() > 1)
+         throw runtime_error(
+             "getnetworkhashps\n"
+             "Returns the estimated network hashes per second based on the last 1440 blocks.");
+ 
+     return GetNetworkHashPS(1440);
+ }
+ 
+ 
 
 Value gethashespersec(const Array& params, bool fHelp)
 {
@@ -93,6 +123,7 @@ Value getmininginfo(const Array& params, bool fHelp)
     obj.push_back(Pair("genproclimit",     (int)GetArg("-genproclimit", -1)));
     obj.push_back(Pair("hashespersec",     gethashespersec(params, false)));
     obj.push_back(Pair("pooledtx",         (uint64_t)mempool.size()));
+	obj.push_back(Pair("networkhashps",    getnetworkhashps(params, false)));
     obj.push_back(Pair("testnet",          TestNet()));
     return obj;
 }
