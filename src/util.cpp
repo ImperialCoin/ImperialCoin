@@ -311,7 +311,7 @@ string vstrprintf(const char *format, va_list ap)
     char* p = buffer;
     int limit = sizeof(buffer);
     int ret;
-    while (true)
+    loop
     {
         va_list arg_ptr;
         va_copy(arg_ptr, ap);
@@ -371,7 +371,7 @@ void ParseString(const string& str, char c, vector<string>& v)
         return;
     string::size_type i1 = 0;
     string::size_type i2;
-    while (true)
+    loop
     {
         i2 = str.find(c, i1);
         if (i2 == str.npos)
@@ -487,7 +487,7 @@ vector<unsigned char> ParseHex(const char* psz)
 {
     // convert hex dump to vector
     vector<unsigned char> vch;
-    while (true)
+    loop
     {
         while (isspace(*psz))
             psz++;
@@ -941,7 +941,7 @@ string DecodeBase32(const string& str)
 
 bool WildcardMatch(const char* psz, const char* mask)
 {
-    while (true)
+    loop
     {
         switch (*mask)
         {
@@ -981,7 +981,7 @@ static std::string FormatException(std::exception* pex, const char* pszThread)
     char pszModule[MAX_PATH] = "";
     GetModuleFileNameA(NULL, pszModule, sizeof(pszModule));
 #else
-    const char* pszModule = "imperialcoin";
+    const char* pszModule = "ImperialCoin";
 #endif
     if (pex)
         return strprintf(
@@ -1017,13 +1017,13 @@ void PrintExceptionContinue(std::exception* pex, const char* pszThread)
 boost::filesystem::path GetDefaultDataDir()
 {
     namespace fs = boost::filesystem;
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\Imperialcoin
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\Imperialcoin
-    // Mac: ~/Library/Application Support/Imperialcoin
-    // Unix: ~/.imperialcoin
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\ImperialCoin
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\ImperialCoin
+    // Mac: ~/Library/Application Support/ImperialCoin
+    // Unix: ~/.ImperialCoin
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "Imperialcoin";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "ImperialCoin";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -1035,10 +1035,10 @@ boost::filesystem::path GetDefaultDataDir()
     // Mac
     pathRet /= "Library/Application Support";
     fs::create_directory(pathRet);
-    return pathRet / "Imperialcoin";
+    return pathRet / "ImperialCoin";
 #else
     // Unix
-    return pathRet / ".imperialcoin";
+    return pathRet / ".ImperialCoin";
 #endif
 #endif
 }
@@ -1079,7 +1079,7 @@ const boost::filesystem::path &GetDataDir(bool fNetSpecific)
 
 boost::filesystem::path GetConfigFile()
 {
-    boost::filesystem::path pathConfigFile(GetArg("-conf", "imperialcoin.conf"));
+    boost::filesystem::path pathConfigFile(GetArg("-conf", "ImperialCoin.conf"));
     if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir(false) / pathConfigFile;
     return pathConfigFile;
 }
@@ -1089,7 +1089,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 {
     boost::filesystem::ifstream streamConfig(GetConfigFile());
     if (!streamConfig.good())
-        return; // No imperialcoin.conf file is OK
+        return; // No ImperialCoin.conf file is OK
 
     // clear path cache after loading config file
     fCachedPath[0] = fCachedPath[1] = false;
@@ -1099,7 +1099,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 
     for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it)
     {
-        // Don't overwrite existing settings so command line settings override imperialcoin.conf
+        // Don't overwrite existing settings so command line settings override ImperialCoin.conf
         string strKey = string("-") + it->string_key;
         if (mapSettingsRet.count(strKey) == 0)
         {
@@ -1113,7 +1113,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
 
 boost::filesystem::path GetPidFile()
 {
-    boost::filesystem::path pathPidFile(GetArg("-pid", "imperialcoind.pid"));
+    boost::filesystem::path pathPidFile(GetArg("-pid", "ImperialCoind.pid"));
     if (!pathPidFile.is_complete()) pathPidFile = GetDataDir() / pathPidFile;
     return pathPidFile;
 }
@@ -1337,7 +1337,7 @@ void AddTimeData(const CNetAddr& ip, int64 nTime)
                 if (!fMatch)
                 {
                     fDone = true;
-                    string strMessage = _("Warning: Please check that your computer's date and time are correct! If your clock is wrong Imperialcoin will not work properly.");
+                    string strMessage = _("Warning: Please check that your computer's date and time are correct! If your clock is wrong ImperialCoin will not work properly.");
                     strMiscWarning = strMessage;
                     printf("*** %s\n", strMessage.c_str());
                     uiInterface.ThreadSafeMessageBox(strMessage, "", CClientUIInterface::MSG_WARNING);
@@ -1467,4 +1467,16 @@ void RenameThread(const char* name)
     // Prevent warnings for unused parameters...
     (void)name;
 #endif
+}
+
+bool NewThread(void(*pfn)(void*), void* parg)
+{
+    try
+    {
+        boost::thread(pfn, parg); // thread detaches when out of scope
+    } catch(boost::thread_resource_error &e) {
+        printf("Error creating thread: %s\n", e.what());
+        return false;
+    }
+    return true;
 }

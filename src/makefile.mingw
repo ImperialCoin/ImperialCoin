@@ -102,13 +102,26 @@ OBJS= \
     obj/noui.o \
     obj/leveldb.o \
     obj/txdb.o \
-    obj/chainparams.o
+    obj/chainparams.o \
+    obj/scrypt.o \
+    obj/scrypt-sse2.o \
+    obj/blake.o \
+    obj/bmw.o \
+    obj/groestl.o \
+    obj/jh.o \
+    obj/keccak.o \
+    obj/skein.o \
+    obj/echo.o \
+    obj/luffa.o \
+    obj/simd.o \
+    obj/cubehash.o \
+    obj/shavite.o
 
 
-all: imperialcoind.exe
+all: ImperialCoind.exe
 
-test check: test_imperialcoin.exe FORCE
-	test_imperialcoin.exe
+test check: test_ImperialCoin.exe FORCE
+	test_ImperialCoin.exe
 
 #
 # LevelDB support
@@ -122,7 +135,10 @@ leveldb/libleveldb.a:
 obj/%.o: %.cpp $(HEADERS)
 	$(CXX) -c $(CFLAGS) -o $@ $<
 
-imperialcoind.exe: $(OBJS:obj/%=obj/%)
+obj/%.o: %.c $(HEADERS)
+	$(CXX) -c $(CFLAGS) -fpermissive -o $@ $<
+
+ImperialCoind.exe: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -130,11 +146,11 @@ TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
 obj-test/%.o: test/%.cpp $(HEADERS)
 	$(CXX) -c $(TESTDEFS) $(CFLAGS) -o $@ $<
 
-test_imperialcoin.exe: $(TESTOBJS) $(filter-out obj/init.o obj/imperialcoind.o,$(OBJS:obj/%=obj/%))
+test_ImperialCoin.exe: $(TESTOBJS) $(filter-out obj/init.o obj/ImperialCoind.o,$(OBJS:obj/%=obj/%))
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework$(BOOST_SUFFIX) $(LIBS)
 
 clean:
-	rm -f imperialcoind.exe test_imperialcoin.exe
+	rm -f ImperialCoind.exe test_ImperialCoin.exe
 	rm -f obj/*
 	rm -f obj-test/*
 	cd leveldb && $(MAKE) TARGET_OS=NATIVE_WINDOWS clean && cd ..

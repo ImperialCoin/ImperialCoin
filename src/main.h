@@ -64,8 +64,7 @@ static const int fHaveUPnP = false;
 extern CScript COINBASE_FLAGS;
 
 
-
-
+extern int miningAlgo;
 
 
 extern CCriticalSection cs_main;
@@ -162,7 +161,7 @@ void ThreadScriptCheck();
 /** Run the miner threads */
 void GenerateBitcoins(bool fGenerate, CWallet* pwallet);
 /** Generate a new block, without valid proof-of-work */
-CBlockTemplate* CreateNewBlock(CReserveKey& reservekey);
+CBlockTemplate* CreateNewBlock(CReserveKey& reservekey, int algo);
 /** Modify the extranonce in a block */
 void IncrementExtraNonce(CBlock* pblock, CBlockIndex* pindexPrev, unsigned int& nExtraNonce);
 /** Do mining precalculation */
@@ -170,7 +169,7 @@ void FormatHashBuffers(CBlock* pblock, char* pmidstate, char* pdata, char* phash
 /** Check mined block */
 bool CheckWork(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey);
 /** Check whether a block hash satisfies the proof-of-work requirement specified by nBits */
-bool CheckProofOfWork(uint256 hash, unsigned int nBits);
+bool CheckProofOfWork(uint256 hash, unsigned int nBits, int algo);
 /** Calculate the minimum amount of work a received block needs, without knowing its direct parent */
 unsigned int ComputeMinWork(unsigned int nBase, int64 nTime);
 /** Get the number of active peers */
@@ -194,8 +193,6 @@ CBlockIndex * InsertBlockIndex(uint256 hash);
 bool VerifySignature(const CCoins& txFrom, const CTransaction& txTo, unsigned int nIn, unsigned int flags, int nHashType);
 /** Abort with a message */
 bool AbortNode(const std::string &msg);
-
-
 
 
 
@@ -666,6 +663,8 @@ public:
      }
 };
 
+
+
 extern CCriticalSection cs_LastBlockFile;
 extern CBlockFileInfo infoLastBlockFile;
 extern int nLastBlockFile;
@@ -687,6 +686,8 @@ enum BlockStatus {
     BLOCK_FAILED_CHILD       =   64, // descends from failed block
     BLOCK_FAILED_MASK        =   96
 };
+
+const int64 nBlockAlgoWorkWeightStart = 142000; // block where algo work weighting starts
 
 /** The block chain is a tree shaped structure starting with the
  * genesis block at the root, with each block potentially having multiple
@@ -774,7 +775,9 @@ public:
         nBits          = block.nBits;
         nNonce         = block.nNonce;
     }
-
+    
+    int GetAlgo() const { return ::GetAlgo(nVersion); }
+    
     CDiskBlockPos GetBlockPos() const {
         CDiskBlockPos ret;
         if (nStatus & BLOCK_HAVE_DATA) {
@@ -825,6 +828,41 @@ public:
         return (CBigNum(1)<<256) / (bnTarget+1);
     }
 
+    int GetAlgoWorkFactor() const 
+    {
+        if (!TestNet() && (nHeight < nBlockAlgoWorkWeightStart))
+        {
+            return 1;
+        }
+        if (TestNet() && (nHeight < 100))
+        {
+            return 1;
+        }
+        switch (GetAlgo())
+        {
+            case ALGO_SHA256D:
+                return 1; 
+            // work factor = absolute work ratio * optimisation factor
+            case ALGO_SCRYPT:
+                return 1024 * 4;
+            case ALGO_GROESTL:
+                return 64 * 8;
+            case ALGO_SKEIN:
+                return 4 * 6;
+            case ALGO_QUBIT:
+                return 128 * 8;
+            default:
+                return 1;
+        }
+    }
+
+    CBigNum GetBlockWorkAdjusted() const
+    {
+        CBigNum bnRes;
+        bnRes = GetBlockWork() * GetAlgoWorkFactor();
+        return bnRes;
+    }
+    
     bool IsInMainChain() const
     {
         return nHeight < (int)vBlockIndexByHeight.size() && vBlockIndexByHeight[nHeight] == this;
@@ -836,7 +874,11 @@ public:
 
     bool CheckIndex() const
     {
-        return CheckProofOfWork(GetBlockHash(), nBits);
+        int algo = GetAlgo();
+        if (algo == ALGO_SHA256D)
+            return CheckProofOfWork(GetBlockHash(), nBits, algo);
+        else
+            return true;
     }
 
     enum { nMedianTimeSpan=11 };
@@ -871,8 +913,10 @@ public:
      * Returns true if there are nRequired or more blocks of minVersion or above
      * in the last nToCheck blocks, starting at pstart and going backwards.
      */
+    /*
     static bool IsSuperMajority(int minVersion, const CBlockIndex* pstart,
                                 unsigned int nRequired, unsigned int nToCheck);
+    */
 
     std::string ToString() const
     {
@@ -901,6 +945,9 @@ struct CBlockIndexWorkComparator
     }
 };
 
+
+const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, int algo);
+const CBlockIndex* GetLastBlockIndexForAlgo(const CBlockIndex* pindex, int algo);
 
 
 /** Used to marshal pointers into hashes for db storage. */

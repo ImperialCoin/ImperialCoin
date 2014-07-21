@@ -175,7 +175,7 @@ int main(int argc, char *argv[])
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
     QApplication::setOrganizationName("ImperialCoin");
-    QApplication::setOrganizationDomain("");
+    QApplication::setOrganizationDomain("ImperialCoin.org");
     if (GetBoolArg("-testnet", false)) // Separate UI settings for testnet
         QApplication::setApplicationName("ImperialCoin-Qt-testnet");
     else
@@ -197,7 +197,7 @@ int main(int argc, char *argv[])
     // Install global event filter that makes sure that long tooltips can be word-wrapped
     app.installEventFilter(new GUIUtil::ToolTipToRichTextFilter(TOOLTIP_WRAP_THRESHOLD, &app));
 
-    // ... then abccoin.conf:
+    // ... then ImperialCoin.conf:
     if (!boost::filesystem::is_directory(GetDataDir(false)))
     {
         QMessageBox::critical(0, QObject::tr("ImperialCoin"),
@@ -282,7 +282,7 @@ int main(int argc, char *argv[])
                 }
 
                 // Now that initialization/startup is done, process any command-line
-                // abccoin: URIs
+                // ImperialCoin: URIs
                 QObject::connect(paymentServer, SIGNAL(receivedURI(QString)), &window, SLOT(handleURI(QString)));
                 QTimer::singleShot(100, paymentServer, SLOT(uiReady()));
 
@@ -293,7 +293,7 @@ int main(int argc, char *argv[])
                 window.removeAllWallets();
                 guiref = 0;
             }
-            // Shutdown the core and its threads, but don't exit ABCCoin-Qt here
+            // Shutdown the core and its threads, but don't exit ImperialCoin-Qt here
             threadGroup.interrupt_all();
             threadGroup.join_all();
             Shutdown();

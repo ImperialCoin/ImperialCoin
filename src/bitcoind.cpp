@@ -35,7 +35,7 @@ bool AppInit(int argc, char* argv[])
         //
         // Parameters
         //
-        // If Qt is used, parameters/imperialcoin.conf are parsed in qt/bitcoin.cpp's main()
+        // If Qt is used, parameters/ImperialCoin.conf are parsed in qt/bitcoin.cpp's main()
         ParseParameters(argc, argv);
         if (!boost::filesystem::is_directory(GetDataDir(false)))
         {
@@ -46,13 +46,13 @@ bool AppInit(int argc, char* argv[])
 
         if (mapArgs.count("-?") || mapArgs.count("--help"))
         {
-            // First part of help message is specific to imperialcoind / RPC client
-            std::string strUsage = _("Imperialcoin version") + " " + FormatFullVersion() + "\n\n" +
+            // First part of help message is specific to ImperialCoind / RPC client
+            std::string strUsage = _("ImperialCoin version") + " " + FormatFullVersion() + "\n\n" +
                 _("Usage:") + "\n" +
-                  "  imperialcoind [options]                     " + "\n" +
-                  "  imperialcoind [options] <command> [params]  " + _("Send command to -server or imperialcoind") + "\n" +
-                  "  imperialcoind [options] help                " + _("List commands") + "\n" +
-                  "  imperialcoind [options] help <command>      " + _("Get help for a command") + "\n";
+                  "  ImperialCoind [options]                     " + "\n" +
+                  "  ImperialCoind [options] <command> [params]  " + _("Send command to -server or ImperialCoind") + "\n" +
+                  "  ImperialCoind [options] help                " + _("List commands") + "\n" +
+                  "  ImperialCoind [options] help <command>      " + _("Get help for a command") + "\n";
 
             strUsage += "\n" + HelpMessage();
 
@@ -62,7 +62,7 @@ bool AppInit(int argc, char* argv[])
 
         // Command-line RPC
         for (int i = 1; i < argc; i++)
-            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "imperialcoin:"))
+            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "ImperialCoin:"))
                 fCommandLine = true;
 
         if (fCommandLine)
@@ -129,7 +129,7 @@ int main(int argc, char* argv[])
     bool fRet = false;
     fHaveGUI = false;
 
-    // Connect imperialcoind signal handlers
+    // Connect ImperialCoind signal handlers
     noui_connect();
 
     fRet = AppInit(argc, argv);

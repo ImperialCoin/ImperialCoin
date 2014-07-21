@@ -176,13 +176,44 @@ Value stop(const Array& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "stop\n"
-            "Stop Imperialcoin server.");
+            "Stop ImperialCoin server.");
     // Shutdown will take long enough that the response should get back
     StartShutdown();
-    return "Imperialcoin server stopping";
+    return "ImperialCoin server stopping";
 }
 
+Value makekeypair(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() > 1)
+        throw runtime_error(
+            "makekeypair [prefix]\n"
+            "Make a public/private key pair.\n"
+            "[prefix] is optional preferred prefix for the public key.\n");
 
+    string strPrefix = "";
+    if (params.size() > 0)
+        strPrefix = params[0].get_str();
+
+    CKey key;
+    CPubKey pubkey;
+    string pubkeyhex;
+    int nCount = 0;
+    do
+    {
+        key.MakeNewKey(false);
+        nCount++;
+        pubkey = key.GetPubKey();
+        pubkeyhex = HexStr(pubkey.begin(), pubkey.end());
+    } while (nCount < 10000 && strPrefix != pubkeyhex.substr(0, strPrefix.size()));
+
+    if (strPrefix != pubkeyhex.substr(0, strPrefix.size()))
+        return Value::null;
+
+    Object result;
+    result.push_back(Pair("PublicKey", pubkeyhex));
+    result.push_back(Pair("PrivateKey", CBitcoinSecret(key).ToString()));
+    return result;
+}
 
 //
 // Call Table
@@ -204,7 +235,6 @@ static const CRPCCommand vRPCCommands[] =
     { "getgenerate",            &getgenerate,            true,      false },
     { "setgenerate",            &setgenerate,            true,      false },
     { "gethashespersec",        &gethashespersec,        true,      false },
-	{ "getnetworkhashps",       &getnetworkhashps,       true,      false },
     { "getinfo",                &getinfo,                true,      false },
     { "getmininginfo",          &getmininginfo,          true,      false },
     { "getnewaddress",          &getnewaddress,          true,      false },
@@ -259,6 +289,7 @@ static const CRPCCommand vRPCCommands[] =
     { "lockunspent",            &lockunspent,            false,     false },
     { "listlockunspent",        &listlockunspent,        false,     false },
     { "verifychain",            &verifychain,            true,      false },
+    { "makekeypair",            &makekeypair,            false,     false },
 };
 
 CRPCTable::CRPCTable()
@@ -292,7 +323,7 @@ string HTTPPost(const string& strMsg, const map<string,string>& mapRequestHeader
 {
     ostringstream s;
     s << "POST / HTTP/1.1\r\n"
-      << "User-Agent: imperialcoin-json-rpc/" << FormatFullVersion() << "\r\n"
+      << "User-Agent: ImperialCoin-json-rpc/" << FormatFullVersion() << "\r\n"
       << "Host: 127.0.0.1\r\n"
       << "Content-Type: application/json\r\n"
       << "Content-Length: " << strMsg.size() << "\r\n"
@@ -323,7 +354,7 @@ static string HTTPReply(int nStatus, const string& strMsg, bool keepalive)
     if (nStatus == HTTP_UNAUTHORIZED)
         return strprintf("HTTP/1.0 401 Authorization Required\r\n"
             "Date: %s\r\n"
-            "Server: imperialcoin-json-rpc/%s\r\n"
+            "Server: ImperialCoin-json-rpc/%s\r\n"
             "WWW-Authenticate: Basic realm=\"jsonrpc\"\r\n"
             "Content-Type: text/html\r\n"
             "Content-Length: 296\r\n"
@@ -350,7 +381,7 @@ static string HTTPReply(int nStatus, const string& strMsg, bool keepalive)
             "Connection: %s\r\n"
             "Content-Length: %"PRIszu"\r\n"
             "Content-Type: application/json\r\n"
-            "Server: imperialcoin-json-rpc/%s\r\n"
+            "Server: ImperialCoin-json-rpc/%s\r\n"
             "\r\n"
             "%s",
         nStatus,
@@ -415,7 +446,7 @@ int ReadHTTPStatus(std::basic_istream<char>& stream, int &proto)
 int ReadHTTPHeaders(std::basic_istream<char>& stream, map<string, string>& mapHeadersRet)
 {
     int nLen = 0;
-    while (true)
+    loop
     {
         string str;
         std::getline(stream, str);
@@ -481,7 +512,7 @@ bool HTTPAuthorized(map<string, string>& mapHeaders)
 }
 
 //
-// JSON-RPC protocol.  Imperialcoin speaks version 1.0 for maximum compatibility,
+// JSON-RPC protocol.  ImperialCoin speaks version 1.0 for maximum compatibility,
 // but uses JSON-RPC 1.1/2.0 standards for parts of the 1.0 standard that were
 // unspecified (HTTP errors and contents of 'error').
 //
@@ -730,7 +761,7 @@ void StartRPCThreads()
     {
         unsigned char rand_pwd[32];
         RAND_bytes(rand_pwd, 32);
-        string strWhatAmI = "To use imperialcoind";
+        string strWhatAmI = "To use ImperialCoind";
         if (mapArgs.count("-server"))
             strWhatAmI = strprintf(_("To use the %s option"), "\"-server\"");
         else if (mapArgs.count("-daemon"))
@@ -739,13 +770,13 @@ void StartRPCThreads()
             _("%s, you must set a rpcpassword in the configuration file:\n"
               "%s\n"
               "It is recommended you use the following random password:\n"
-              "rpcuser=imperialcoinrpc\n"
+              "rpcuser=ImperialCoinrpc\n"
               "rpcpassword=%s\n"
               "(you do not need to remember this password)\n"
               "The username and password MUST NOT be the same.\n"
               "If the file does not exist, create it with owner-readable-only file permissions.\n"
               "It is also recommended to set alertnotify so you are notified of problems;\n"
-              "for example: alertnotify=echo %%s | mail -s \"Imperialcoin Alert\" admin@foo.com\n"),
+              "for example: alertnotify=echo %%s | mail -s \"ImperialCoin Alert\" admin@foo.com\n"),
                 strWhatAmI.c_str(),
                 GetConfigFile().string().c_str(),
                 EncodeBase58(&rand_pwd[0],&rand_pwd[0]+32).c_str()),

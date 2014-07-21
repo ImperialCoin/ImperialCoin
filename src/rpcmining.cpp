@@ -62,36 +62,6 @@ Value setgenerate(const Array& params, bool fHelp)
     return Value::null;
 }
 
-// ImperialCoin: Return average network hashes per second based on last number of blocks.
- Value GetNetworkHashPS(int lookup) {
-     if (pindexBest == NULL)
-         return 0;
- 
-     // If lookup is larger than chain, then set it to chain length.
-     if (lookup > pindexBest->nHeight)
-         lookup = pindexBest->nHeight;
- 
-     CBlockIndex* pindexPrev = pindexBest;
-     for (int i = 0; i < lookup; i++)
-         pindexPrev = pindexPrev->pprev;
- 
-     double timeDiff = pindexBest->GetBlockTime() - pindexPrev->GetBlockTime();
-     double timePerBlock = timeDiff / lookup;
- 
-     return (boost::int64_t)(((double)GetDifficulty() * pow(2.0, 32)) / timePerBlock);
- }
- 
- Value getnetworkhashps(const Array& params, bool fHelp)
- {
-     if (fHelp || params.size() > 1)
-         throw runtime_error(
-             "getnetworkhashps\n"
-             "Returns the estimated network hashes per second based on the last 1440 blocks.");
- 
-     return GetNetworkHashPS(1440);
- }
- 
- 
 
 Value gethashespersec(const Array& params, bool fHelp)
 {
@@ -114,17 +84,23 @@ Value getmininginfo(const Array& params, bool fHelp)
             "Returns an object containing mining-related information.");
 
     Object obj;
-    obj.push_back(Pair("blocks",           (int)nBestHeight));
-    obj.push_back(Pair("currentblocksize", (uint64_t)nLastBlockSize));
-    obj.push_back(Pair("currentblocktx",   (uint64_t)nLastBlockTx));
-    obj.push_back(Pair("difficulty",       (double)GetDifficulty()));
-    obj.push_back(Pair("errors",           GetWarnings("statusbar")));
-    obj.push_back(Pair("generate",         GetBoolArg("-gen", false)));
-    obj.push_back(Pair("genproclimit",     (int)GetArg("-genproclimit", -1)));
-    obj.push_back(Pair("hashespersec",     gethashespersec(params, false)));
-    obj.push_back(Pair("pooledtx",         (uint64_t)mempool.size()));
-	obj.push_back(Pair("networkhashps",    getnetworkhashps(params, false)));
-    obj.push_back(Pair("testnet",          TestNet()));
+    obj.push_back(Pair("blocks",             (int)nBestHeight));
+    obj.push_back(Pair("currentblocksize",   (uint64_t)nLastBlockSize));
+    obj.push_back(Pair("currentblocktx",     (uint64_t)nLastBlockTx));
+    obj.push_back(Pair("pow_algo_id",        miningAlgo));
+    obj.push_back(Pair("pow_algo",           GetAlgoName(miningAlgo)));
+    obj.push_back(Pair("difficulty",         (double)GetDifficulty(NULL, miningAlgo)));
+    obj.push_back(Pair("difficulty_sha256d", (double)GetDifficulty(NULL, ALGO_SHA256D)));
+    obj.push_back(Pair("difficulty_scrypt",  (double)GetDifficulty(NULL, ALGO_SCRYPT)));
+    obj.push_back(Pair("difficulty_groestl", (double)GetDifficulty(NULL, ALGO_GROESTL)));
+    obj.push_back(Pair("difficulty_skein",   (double)GetDifficulty(NULL, ALGO_SKEIN)));
+    obj.push_back(Pair("difficulty_qubit",   (double)GetDifficulty(NULL, ALGO_QUBIT)));
+    obj.push_back(Pair("errors",             GetWarnings("statusbar")));
+    obj.push_back(Pair("generate",           GetBoolArg("-gen", false)));
+    obj.push_back(Pair("genproclimit",       (int)GetArg("-genproclimit", -1)));
+    obj.push_back(Pair("hashespersec",       gethashespersec(params, false)));
+    obj.push_back(Pair("pooledtx",           (uint64_t)mempool.size()));
+    obj.push_back(Pair("testnet",            TestNet()));
     return obj;
 }
 
@@ -142,10 +118,10 @@ Value getwork(const Array& params, bool fHelp)
             "If [data] is specified, tries to solve the block and returns true if it was successful.");
 
     if (vNodes.empty())
-        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Imperialcoin is not connected!");
+        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "ImperialCoin is not connected!");
 
     if (IsInitialBlockDownload())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Imperialcoin is downloading blocks...");
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "ImperialCoin is downloading blocks...");
 
     typedef map<uint256, pair<CBlock*, CScript> > mapNewBlock_t;
     static mapNewBlock_t mapNewBlock;    // FIXME: thread safety
@@ -179,7 +155,7 @@ Value getwork(const Array& params, bool fHelp)
             nStart = GetTime();
 
             // Create new block
-            pblocktemplate = CreateNewBlock(*pMiningKey);
+            pblocktemplate = CreateNewBlock(*pMiningKey, miningAlgo);
             if (!pblocktemplate)
                 throw JSONRPCError(RPC_OUT_OF_MEMORY, "Out of memory");
             vNewBlockTemplate.push_back(pblocktemplate);
@@ -283,10 +259,10 @@ Value getblocktemplate(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid mode");
 
     if (vNodes.empty())
-        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "Imperialcoin is not connected!");
+        throw JSONRPCError(RPC_CLIENT_NOT_CONNECTED, "ImperialCoin is not connected!");
 
     if (IsInitialBlockDownload())
-        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "Imperialcoin is downloading blocks...");
+        throw JSONRPCError(RPC_CLIENT_IN_INITIAL_DOWNLOAD, "ImperialCoin is downloading blocks...");
 
     // Update block
     static unsigned int nTransactionsUpdatedLast;
@@ -310,7 +286,7 @@ Value getblocktemplate(const Array& params, bool fHelp)
             delete pblocktemplate;
             pblocktemplate = NULL;
         }
-        pblocktemplate = CreateNewBlock(*pMiningKey);
+        pblocktemplate = CreateNewBlock(*pMiningKey, miningAlgo);
         if (!pblocktemplate)
             throw JSONRPCError(RPC_OUT_OF_MEMORY, "Out of memory");
 

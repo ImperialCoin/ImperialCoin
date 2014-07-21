@@ -4,13 +4,13 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="+14"/>
-        <source>About ABCCoin</source>
-        <translation>关于比特币</translation>
+        <source>About ImperialCoin</source>
+        <translation>关于多彩币</translation>
     </message>
     <message>
         <location line="+39"/>
-        <source>&lt;b&gt;ABCCoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;比特币&lt;/b&gt;版本</translation>
+        <source>&lt;b&gt;ImperialCoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;多彩币&lt;/b&gt;版本</translation>
     </message>
     <message>
         <location line="+57"/>
@@ -34,8 +34,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+0"/>
-        <source>The ABCCoin developers</source>
-        <translation>ABCCoin-qt 客户端开发团队</translation>
+        <source>The ImperialCoin developers</source>
+        <translation>ImperialCoin-qt 客户端开发团队</translation>
     </message>
 </context>
 <context>
@@ -67,8 +67,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="+63"/>
-        <source>These are your ABCCoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>这是您用来收款的比特币地址。为了标记不同的资金来源，建议为每个付款人保留不同的收款地址。</translation>
+        <source>These are your ImperialCoin addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>这是您用来收款的多彩币地址。为了标记不同的资金来源，建议为每个付款人保留不同的收款地址。</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
@@ -82,7 +82,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a ABCCoin address</source>
+        <source>Sign a message to prove you own a ImperialCoin address</source>
         <translation>签名消息，证明这个地址属于您。</translation>
     </message>
     <message>
@@ -107,8 +107,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-44"/>
-        <source>Verify a message to ensure it was signed with a specified ABCCoin address</source>
-        <translation>验证消息，确保消息是由指定的比特币地址签名过的。</translation>
+        <source>Verify a message to ensure it was signed with a specified ImperialCoin address</source>
+        <translation>验证消息，确保消息是由指定的多彩币地址签名过的。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -122,8 +122,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../addressbookpage.cpp" line="-5"/>
-        <source>These are your ABCCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>这是您用来付款的比特币地址。在付款前，请总是核实付款金额和收款地址。</translation>
+        <source>These are your ImperialCoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>这是您用来付款的多彩币地址。在付款前，请总是核实付款金额和收款地址。</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -248,8 +248,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+1"/>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR ZETACOINS&lt;/b&gt;!</source>
-        <translation>警告：如果您加密了您的钱包，但是忘记了密码，你将会&lt;b&gt;丢失所有的比特币&lt;/b&gt;！</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR ImperialCoinS&lt;/b&gt;!</source>
+        <translation>警告：如果您加密了您的钱包，但是忘记了密码，你将会&lt;b&gt;丢失所有的多彩币&lt;/b&gt;！</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -275,8 +275,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-56"/>
-        <source>ABCCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your abccoins from being stolen by malware infecting your computer.</source>
-        <translation>将关闭软件以完成加密过程。 请您谨记：钱包加密并不是万能的，电脑中毒，您的比特币还是有可能丢失。</translation>
+        <source>ImperialCoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ImperialCoins from being stolen by malware infecting your computer.</source>
+        <translation>将关闭软件以完成加密过程。 请您谨记：钱包加密并不是万能的，电脑中毒，您的多彩币还是有可能丢失。</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -374,8 +374,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+4"/>
-        <source>Show information about ABCCoin</source>
-        <translation>显示比特币的相关信息</translation>
+        <source>Show information about ImperialCoin</source>
+        <translation>显示多彩币的相关信息</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -419,12 +419,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-347"/>
-        <source>Send coins to a ABCCoin address</source>
-        <translation>向一个比特币地址发送比特币</translation>
+        <source>Send coins to a ImperialCoin address</source>
+        <translation>向一个多彩币地址发送多彩币</translation>
     </message>
     <message>
         <location line="+49"/>
-        <source>Modify configuration options for ABCCoin</source>
+        <source>Modify configuration options for ImperialCoin</source>
         <translation>设置选项</translation>
     </message>
     <message>
@@ -455,8 +455,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-165"/>
         <location line="+530"/>
-        <source>ABCCoin</source>
-        <translation>比特币</translation>
+        <source>ImperialCoin</source>
+        <translation>多彩币</translation>
     </message>
     <message>
         <location line="-530"/>
@@ -480,8 +480,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+22"/>
-        <source>&amp;About ABCCoin</source>
-        <translation>&amp;关于比特币</translation>
+        <source>&amp;About ImperialCoin</source>
+        <translation>&amp;关于多彩币</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -500,13 +500,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+7"/>
-        <source>Sign messages with your ABCCoin addresses to prove you own them</source>
-        <translation>用比特币地址关联的私钥为消息签名，以证明您拥有这个比特币地址</translation>
+        <source>Sign messages with your ImperialCoin addresses to prove you own them</source>
+        <translation>用多彩币地址关联的私钥为消息签名，以证明您拥有这个多彩币地址</translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Verify messages to ensure they were signed with specified ABCCoin addresses</source>
-        <translation>校验消息，确保该消息是由指定的比特币地址所有者签名的</translation>
+        <source>Verify messages to ensure they were signed with specified ImperialCoin addresses</source>
+        <translation>校验消息，确保该消息是由指定的多彩币地址所有者签名的</translation>
     </message>
     <message>
         <location line="+28"/>
@@ -536,13 +536,13 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="+47"/>
-        <source>ABCCoin client</source>
-        <translation>比特币客户端</translation>
+        <source>ImperialCoin client</source>
+        <translation>多彩币客户端</translation>
     </message>
     <message numerus="yes">
         <location line="+141"/>
-        <source>%n active connection(s) to ABCCoin network</source>
-        <translation><numerusform>到比特币网络的连接共有%n条</numerusform></translation>
+        <source>%n active connection(s) to ImperialCoin network</source>
+        <translation><numerusform>到多彩币网络的连接共有%n条</numerusform></translation>
     </message>
     <message>
         <location line="+22"/>
@@ -607,7 +607,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+70"/>
         <source>This transaction is over the size limit. You can still send it for a fee of %1, which goes to the nodes that process your transaction and helps to support the network. Do you want to pay the fee?</source>
-        <translation>该交易的字节数超标。您可以选择支付%1的交易费给处理您的交易的网络节点，有助于比特币网络的运行。您愿意支付这笔交易费用吗？</translation>
+        <translation>该交易的字节数超标。您可以选择支付%1的交易费给处理您的交易的网络节点，有助于多彩币网络的运行。您愿意支付这笔交易费用吗？</translation>
     </message>
     <message>
         <location line="-140"/>
@@ -656,8 +656,8 @@ Address: %4
     <message>
         <location line="-23"/>
         <location line="+23"/>
-        <source>URI can not be parsed! This can be caused by an invalid ABCCoin address or malformed URI parameters.</source>
-        <translation>URI无法解析！原因可能是比特币地址不正确，或者URI参数错误。</translation>
+        <source>URI can not be parsed! This can be caused by an invalid ImperialCoin address or malformed URI parameters.</source>
+        <translation>URI无法解析！原因可能是多彩币地址不正确，或者URI参数错误。</translation>
     </message>
     <message>
         <location line="+17"/>
@@ -671,7 +671,7 @@ Address: %4
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+111"/>
-        <source>A fatal error occurred. ABCCoin can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. ImperialCoin can no longer continue safely and will quit.</source>
         <translation>发生严重错误。</translation>
     </message>
 </context>
@@ -737,8 +737,8 @@ Address: %4
     </message>
     <message>
         <location line="-5"/>
-        <source>The entered address &quot;%1&quot; is not a valid ABCCoin address.</source>
-        <translation>您输入的 &quot;%1&quot; 不是合法的比特币地址.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid ImperialCoin address.</source>
+        <translation>您输入的 &quot;%1&quot; 不是合法的多彩币地址.</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -756,8 +756,8 @@ Address: %4
     <message>
         <location filename="../guiutil.cpp" line="+424"/>
         <location line="+12"/>
-        <source>ABCCoin-Qt</source>
-        <translation>ABCCoin-Qt</translation>
+        <source>ImperialCoin-Qt</source>
+        <translation>ImperialCoin-Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -820,12 +820,12 @@ Address: %4
     </message>
     <message>
         <location line="+31"/>
-        <source>Automatically start ABCCoin after logging in to the system.</source>
-        <translation>登录系统后自动开启比特币客户端</translation>
+        <source>Automatically start ImperialCoin after logging in to the system.</source>
+        <translation>登录系统后自动开启多彩币客户端</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>&amp;Start ABCCoin on system login</source>
+        <source>&amp;Start ImperialCoin on system login</source>
         <translation>启动时&amp;运行</translation>
     </message>
     <message>
@@ -845,8 +845,8 @@ Address: %4
     </message>
     <message>
         <location line="+6"/>
-        <source>Automatically open the ABCCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>自动在路由器中打开比特币端口。只有当您的路由器开启 UPnP 选项时此功能才有效。</translation>
+        <source>Automatically open the ImperialCoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>自动在路由器中打开多彩币端口。只有当您的路由器开启 UPnP 选项时此功能才有效。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -855,8 +855,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Connect to the ABCCoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
-        <translation>通过代理服务器连接比特币网络(例如：通过Tor连接)</translation>
+        <source>Connect to the ImperialCoin network through a SOCKS proxy (e.g. when connecting through Tor).</source>
+        <translation>通过代理服务器连接多彩币网络(例如：通过Tor连接)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -930,28 +930,28 @@ Address: %4
     </message>
     <message>
         <location line="+13"/>
-        <source>The user interface language can be set here. This setting will take effect after restarting ABCCoin.</source>
+        <source>The user interface language can be set here. This setting will take effect after restarting ImperialCoin.</source>
         <translation>在这里设置用户界面的语言。设置将在客户端重启后生效。</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>&amp;Unit to show amounts in:</source>
-        <translation>&amp;比特币金额单位:</translation>
+        <translation>&amp;多彩币金额单位:</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>选择比特币单位。</translation>
+        <translation>选择多彩币单位。</translation>
     </message>
     <message>
         <location line="+9"/>
-        <source>Whether to show ABCCoin addresses in the transaction list or not.</source>
-        <translation>是否需要在交易清单中显示比特币地址。</translation>
+        <source>Whether to show ImperialCoin addresses in the transaction list or not.</source>
+        <translation>是否需要在交易清单中显示多彩币地址。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>&amp;Display addresses in transaction list</source>
-        <translation>在交易清单中&amp;显示比特币地址</translation>
+        <translation>在交易清单中&amp;显示多彩币地址</translation>
     </message>
     <message>
         <location line="+71"/>
@@ -997,7 +997,7 @@ Address: %4
     <message>
         <location line="-9"/>
         <location line="+9"/>
-        <source>This setting will take effect after restarting ABCCoin.</source>
+        <source>This setting will take effect after restarting ImperialCoin.</source>
         <translation>需要重启客户端软件才能生效。</translation>
     </message>
     <message>
@@ -1016,8 +1016,8 @@ Address: %4
     <message>
         <location line="+50"/>
         <location line="+166"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the ABCCoin network after a connection is established, but this process has not completed yet.</source>
-        <translation>现在显示的消息可能是过期的. 在连接上比特币网络节点后，您的钱包将自动与网络同步，但是这个过程还没有完成.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the ImperialCoin network after a connection is established, but this process has not completed yet.</source>
+        <translation>现在显示的消息可能是过期的. 在连接上多彩币网络节点后，您的钱包将自动与网络同步，但是这个过程还没有完成.</translation>
     </message>
     <message>
         <location line="-124"/>
@@ -1070,8 +1070,8 @@ Address: %4
     <name>PaymentServer</name>
     <message>
         <location filename="../paymentserver.cpp" line="+107"/>
-        <source>Cannot start abccoin: click-to-pay handler</source>
-        <translation>暂时无法启动比特币：点击支付功能</translation>
+        <source>Cannot start ImperialCoin: click-to-pay handler</source>
+        <translation>暂时无法启动多彩币：点击支付功能</translation>
     </message>
 </context>
 <context>
@@ -1186,7 +1186,7 @@ Address: %4
     <message>
         <location line="+23"/>
         <source>On testnet</source>
-        <translation>当前为比特币测试网络</translation>
+        <translation>当前为多彩币测试网络</translation>
     </message>
     <message>
         <location line="+23"/>
@@ -1220,8 +1220,8 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the ABCCoin-Qt help message to get a list with possible ABCCoin command-line options.</source>
-        <translation>显示ABCCoin命令行选项帮助信息</translation>
+        <source>Show the ImperialCoin-Qt help message to get a list with possible ImperialCoin command-line options.</source>
+        <translation>显示ImperialCoin命令行选项帮助信息</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1240,13 +1240,13 @@ Address: %4
     </message>
     <message>
         <location line="-104"/>
-        <source>ABCCoin - Debug window</source>
-        <translation>比特币 - 调试窗口</translation>
+        <source>ImperialCoin - Debug window</source>
+        <translation>多彩币 - 调试窗口</translation>
     </message>
     <message>
         <location line="+25"/>
-        <source>ABCCoin Core</source>
-        <translation>比特币核心</translation>
+        <source>ImperialCoin Core</source>
+        <translation>多彩币核心</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1255,7 +1255,7 @@ Address: %4
     </message>
     <message>
         <location line="+7"/>
-        <source>Open the ABCCoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
+        <source>Open the ImperialCoin debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation>打开当前目录中的调试日志文件。日志文件大的话可能要等上几秒钟。</translation>
     </message>
     <message>
@@ -1265,7 +1265,7 @@ Address: %4
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-30"/>
-        <source>Welcome to the ABCCoin RPC console.</source>
+        <source>Welcome to the ImperialCoin RPC console.</source>
         <translation>欢迎来到 RPC 控制台.</translation>
     </message>
     <message>
@@ -1386,7 +1386,7 @@ Address: %4
     <message>
         <location line="+5"/>
         <source>Error: The transaction was rejected. This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>错误: 交易被拒绝. 如果您使用的是备份钱包，可能存在两个钱包不同步的情况，另一个钱包中的比特币已经被使用，但本地的这个钱包尚没有记录。</translation>
+        <translation>错误: 交易被拒绝. 如果您使用的是备份钱包，可能存在两个钱包不同步的情况，另一个钱包中的多彩币已经被使用，但本地的这个钱包尚没有记录。</translation>
     </message>
 </context>
 <context>
@@ -1449,8 +1449,8 @@ Address: %4
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a ABCCoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation>请输入比特币地址 (例如: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <source>Enter a ImperialCoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>请输入多彩币地址 (例如: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
 </context>
 <context>
@@ -1514,7 +1514,7 @@ Address: %4
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this ABCCoin address</source>
+        <source>Sign the message to prove you own this ImperialCoin address</source>
         <translation>签名消息，证明这个地址属于您。</translation>
     </message>
     <message>
@@ -1550,8 +1550,8 @@ Address: %4
     </message>
     <message>
         <location line="+40"/>
-        <source>Verify the message to ensure it was signed with the specified ABCCoin address</source>
-        <translation>验证消息，确保消息是由指定的比特币地址签名过的。</translation>
+        <source>Verify the message to ensure it was signed with the specified ImperialCoin address</source>
+        <translation>验证消息，确保消息是由指定的多彩币地址签名过的。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1566,8 +1566,8 @@ Address: %4
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a ABCCoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation>请输入比特币地址 (例如: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
+        <source>Enter a ImperialCoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>请输入多彩币地址 (例如: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -1576,8 +1576,8 @@ Address: %4
     </message>
     <message>
         <location line="+3"/>
-        <source>Enter ABCCoin signature</source>
-        <translation>输入比特币签名</translation>
+        <source>Enter ImperialCoin signature</source>
+        <translation>输入多彩币签名</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -1650,8 +1650,8 @@ Address: %4
     <name>SplashScreen</name>
     <message>
         <location filename="../splashscreen.cpp" line="+25"/>
-        <source>The ABCCoin developers</source>
-        <translation>ABCCoin-qt 客户端开发团队</translation>
+        <source>The ImperialCoin developers</source>
+        <translation>ImperialCoin-qt 客户端开发团队</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1785,7 +1785,7 @@ Address: %4
     <message>
         <location line="+3"/>
         <source>Generated coins must mature 120 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>新挖出的比特币必须等确120个确认才能使用。您生产出的数据块，将被广播到全网并添加到数据块链。如果入链失败，状态将变为“未被接受”，意味着您的数据块竞争失败，挖出的比特币将不能使用。当某个节点先于你几秒生产出新的数据块，这种情况会偶尔发生。</translation>
+        <translation>新挖出的多彩币必须等确120个确认才能使用。您生产出的数据块，将被广播到全网并添加到数据块链。如果入链失败，状态将变为“未被接受”，意味着您的数据块竞争失败，挖出的多彩币将不能使用。当某个节点先于你几秒生产出新的数据块，这种情况会偶尔发生。</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1946,7 +1946,7 @@ Address: %4
     <message>
         <location line="+2"/>
         <source>Date and time that the transaction was received.</source>
-        <translation>接收比特币的时间</translation>
+        <translation>接收多彩币的时间</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2138,7 +2138,7 @@ Address: %4
     <message>
         <location filename="../walletmodel.cpp" line="+193"/>
         <source>Send Coins</source>
-        <translation>发送比特币</translation>
+        <translation>发送多彩币</translation>
     </message>
 </context>
 <context>
@@ -2188,8 +2188,8 @@ Address: %4
     <name>bitcoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+94"/>
-        <source>ABCCoin version</source>
-        <translation>比特币版本</translation>
+        <source>ImperialCoin version</source>
+        <translation>多彩币版本</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -2198,8 +2198,8 @@ Address: %4
     </message>
     <message>
         <location line="-29"/>
-        <source>Send command to -server or abccoind</source>
-        <translation>发送命令到服务器或者 abccoind
+        <source>Send command to -server or ImperialCoind</source>
+        <translation>发送命令到服务器或者 ImperialCoind
 </translation>
     </message>
     <message>
@@ -2222,14 +2222,14 @@ Address: %4
     </message>
     <message>
         <location line="+24"/>
-        <source>Specify configuration file (default: abccoin.conf)</source>
-        <translation>指定配置文件 (默认为 abccoin.conf)
+        <source>Specify configuration file (default: ImperialCoin.conf)</source>
+        <translation>指定配置文件 (默认为 ImperialCoin.conf)
 </translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Specify pid file (default: abccoind.pid)</source>
-        <translation>指定 pid 文件 (默认为 abccoind.pid)
+        <source>Specify pid file (default: ImperialCoind.pid)</source>
+        <translation>指定 pid 文件 (默认为 ImperialCoind.pid)
 </translation>
     </message>
     <message>
@@ -2312,24 +2312,24 @@ Address: %4
         <source>%s, you must set a rpcpassword in the configuration file:
 %s
 It is recommended you use the following random password:
-rpcuser=abccoinrpc
+rpcuser=ImperialCoinrpc
 rpcpassword=%s
 (you do not need to remember this password)
 The username and password MUST NOT be the same.
 If the file does not exist, create it with owner-readable-only file permissions.
 It is also recommended to set alertnotify so you are notified of problems;
-for example: alertnotify=echo %%s | mail -s &quot;ABCCoin Alert&quot; admin@foo.com
+for example: alertnotify=echo %%s | mail -s &quot;ImperialCoin Alert&quot; admin@foo.com
 </source>
         <translation>%s, 您必须在配置文件设置rpcpassword:
  %s
 建议您使用下面的随机密码:
-rpcuser=abccoinrpc
+rpcuser=ImperialCoinrpc
 rpcpassword=%s
 (您无需记住此密码)
 用户名和密码 必! 须! 不一样。
 如果配置文件不存在，请自行建立一个只有所有者拥有只读权限的文件。
 推荐您开启提示通知以便收到错误通知，
-像这样: alertnotify=echo %%s | mail -s &quot;ABCCoin Alert&quot; admin@foo.com
+像这样: alertnotify=echo %%s | mail -s &quot;ImperialCoin Alert&quot; admin@foo.com
 </translation>
     </message>
     <message>
@@ -2344,13 +2344,13 @@ rpcpassword=%s
     </message>
     <message>
         <location line="+3"/>
-        <source>Cannot obtain a lock on data directory %s. ABCCoin is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s. ImperialCoin is probably already running.</source>
         <translation>无法给数据目录 %s上锁。本软件可能已经在运行。</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>错误：该交易被拒绝！发生这种错误的原因可能是：钱包中的比特币已经被用掉，有可能您复制了wallet.dat钱包文件，然后用复制的钱包文件支付了比特币，但是这个钱包文件中没有记录。</translation>
+        <translation>错误：该交易被拒绝！发生这种错误的原因可能是：钱包中的多彩币已经被用掉，有可能您复制了wallet.dat钱包文件，然后用复制的钱包文件支付了多彩币，但是这个钱包文件中没有记录。</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -2389,8 +2389,8 @@ rpcpassword=%s
     </message>
     <message>
         <location line="+3"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong ABCCoin will not work properly.</source>
-        <translation>警告：请检查电脑的日期时间设置是否正确！时间错误可能会导致比特币客户端运行异常。</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong ImperialCoin will not work properly.</source>
+        <translation>警告：请检查电脑的日期时间设置是否正确！时间错误可能会导致多彩币客户端运行异常。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2639,8 +2639,8 @@ rpcpassword=%s
     </message>
     <message>
         <location line="+5"/>
-        <source>SSL options: (see the ABCCoin Wiki for SSL setup instructions)</source>
-        <translation>SSL选项：(参见ABCCoin Wiki关于SSL设置栏目)</translation>
+        <source>SSL options: (see the ImperialCoin Wiki for SSL setup instructions)</source>
+        <translation>SSL选项：(参见ImperialCoin Wiki关于SSL设置栏目)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2839,13 +2839,13 @@ rpcpassword=%s
     </message>
     <message>
         <location line="+1"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of ABCCoin</source>
-        <translation>wallet.dat钱包文件加载错误：请升级到最新ABCCoin客户端</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of ImperialCoin</source>
+        <translation>wallet.dat钱包文件加载错误：请升级到最新ImperialCoin客户端</translation>
     </message>
     <message>
         <location line="+93"/>
-        <source>Wallet needed to be rewritten: restart ABCCoin to complete</source>
-        <translation>钱包文件需要重写：请退出并重新启动ABCCoin客户端</translation>
+        <source>Wallet needed to be rewritten: restart ImperialCoin to complete</source>
+        <translation>钱包文件需要重写：请退出并重新启动ImperialCoin客户端</translation>
     </message>
     <message>
         <location line="-95"/>
@@ -2904,8 +2904,8 @@ rpcpassword=%s
     </message>
     <message>
         <location line="-25"/>
-        <source>Unable to bind to %s on this computer. ABCCoin is probably already running.</source>
-        <translation>无法在本机绑定 %s 端口 . 比特币客户端软件可能已经在运行.</translation>
+        <source>Unable to bind to %s on this computer. ImperialCoin is probably already running.</source>
+        <translation>无法在本机绑定 %s 端口 . 多彩币客户端软件可能已经在运行.</translation>
     </message>
     <message>
         <location line="+64"/>
