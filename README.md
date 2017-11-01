@@ -1,0 +1,5 @@
+# ImperialCoin
+
+ImperialCoin was an altcoin created by Scott Larimer (Goo) in 2014. It held the honor of being the first coin to switch algorithms while maintaining the validity of pre-fork coins. While it may have been a simple clone of Bitcoin, then a slightly modified version of Myriad, it was the first ever project I ever worked on. Being 14 years old, this also made me the youngest cryptocurrency developer at the time. While it may have died after a "competing" coin of the same name got the trademark first and hit the main post on BTT and the exchanges it was on with a takedown, it will exist, archived here.
+
+While I have moved on to working on my own original projects from scratch, this is the first thing I ever worked on. To any random visitors, hello! You're seeing a coin that never really got much attention, but made me feel like a real developer (especially after I was able to be the first dev to figure out how to change the algorithm without just starting a new coin of the same name). It may not hold any real value, but to me this repo means a lot.
